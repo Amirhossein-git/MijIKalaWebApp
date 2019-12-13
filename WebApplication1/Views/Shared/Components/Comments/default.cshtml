@@ -1,0 +1,33 @@
+﻿@model Comment
+
+<li class="list-group-item">
+    <div class="row">
+        <div class="col-xs-2 col-md-1" style="float:right">
+            <img width="80" height="80" src="~/css/Images/default.png" class="img-circle img-responsive" alt="" />
+        </div>
+        <div class="col-xs-10 col-md-11">
+            <div>
+                <p class="text-info card-title">
+                    @Model.CommentTitle
+                </p>
+                <div class="mic-info">
+                    از: <a href="#">عباس قادری</a> در @Model.SubmitDate
+                </div>
+            </div>
+            <div class="comment-text">
+                @Model.CommentText
+            </div>
+            <div class="action">
+                <button type="button" class="btn btn-primary btn-xs" title="Edit">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                </button>
+                <button type="button" class="btn btn-success btn-xs" title="Approved">
+                    <span class="glyphicon glyphicon-ok"></span>
+                </button>
+                <button type="button" class="btn btn-danger btn-xs" title="Delete">
+                    <span class="glyphicon glyphicon-trash"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+</li>

@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - WebApplication1</title>
+    <link rel="stylesheet" href="~/lib/bootstrap-4.2.1-rtl/dist/css/rtl/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/lib/font-awesome-4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Home">
+                    <img src="~/css/Images/Logo/MigikalaLogo.png" alt="Migikala" height="50" width="90">
+                    <span>!</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a style="color:rgb(59, 59, 59)" class="nav-link dropdown-toggle" href="#" id="products" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                محصولات
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="products">
+                                <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Products" asp-route-category="HomeAppliances" asp-route-page="1">لوازم خانگی</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Products" asp-route-category="Book" asp-route-page="1">کتاب</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Products" asp-route-category="Stationery" asp-route-page="1">لوازم التحریر</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Products" asp-route-category="Bag" asp-route-page="1">کیف</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Products" asp-route-category="Electronical" asp-route-page="1">الکترونیکی</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Products" asp-route-category="Clothes" asp-route-page="1">پوشاک</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Products" asp-route-category="Food" asp-route-page="1">غذایی</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Products" asp-route-category="Sport" asp-route-page="1">ورزشی</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Registery" asp-action="SignIn">ورود</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Registery" asp-action="SignUp">ثبت نام</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="TheNewest" asp-route-page="1">جدیدترین ها</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="WithDiscount" asp-route-page="1">تخفیف دار ها</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="ContactUs" asp-action="Info">ارتباط با ما</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown-formember" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                @if (User == null || !User.Identity.IsAuthenticated)
+                                {
+                                    <span>کاربر میهمان</span>
+                                }
+                                else if (User.Claims.Any(i=>i.Type==ClaimConst.FullName))
+                                {
+                                    <span>@User.Claims.FirstOrDefault(i=>i.Type==ClaimConst.FullName).Value</span>
+                                }
+                                else
+                                {
+                                    <span>@User.Identity.Name</span>
+                                }
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown-formember">
+                                @if (User == null || !User.Identity.IsAuthenticated)
+                                {
+                                    <a class="dropdown-item" asp-controller="Registery" asp-action="SignUp">ورود به سیستم</a>
+                                }
+                                else
+                                {
+                                    <a class="dropdown-item" href="#">خروج</a>
+                                    <a class="dropdown-item" href="#">پروفایل</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">سبد خرید</a>
+                                }
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div style="float:left">
+                    <form class="form-inline my-2 my-lg-0" method="get" asp-controller="Home" asp-action="Search">
+                        <i class="fa fa-search"></i>
+                        <input class="form-control mr-sm-2" name="searchText" type="search" placeholder="تو بگو ف...">
+                        <input name="page" type="hidden" value="1">
+                        <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">جستجو</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+    <button class="goto-top-btn btn-danger text-light shadow-sm">
+        <i class="fa fa-angle-double-up"></i>
+    </button>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <footer class="border-top text-muted">
+        <div class="container">
+            <i class="fa fa-twitter fa-lg"></i>
+            <i class="fa fa-facebook-official fa-lg"></i>
+            <i class="fa fa-instagram fa-lg"></i>
+            <i class="fa fa-whatsapp fa-lg"></i>
+            <p>&copy; 2019 - فروشگاه میجیکالا - <a asp-area="" asp-controller="Privacy" asp-action="Privacy">حریم خصوصی</a></p>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

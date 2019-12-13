@@ -1,0 +1,63 @@
+﻿@model SignInViewModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="~/css/registery.css" />
+    <link rel="stylesheet" href="~/lib/font-awesome-4.7.0/css/font-awesome.min.css">
+    @{if (Model.NotFirstTime)
+        {
+            <style>
+                .sign-in-form-input{
+                    border-color:rgb(202, 190, 54);
+                }
+            </style>
+        }
+    };
+</head>
+<body class="registery">
+    <div class="sign-in-main-div">
+        <h3 style="color:darkblue">به میجیکالا خوش آمدید</h3>
+        <form asp-action="SignIn" novalidate class="sign-in-form" name="registery-form" method="post" onsubmit="return checkFormSignIn()">
+            <input asp-for="NotFirstTime" type="hidden" value="true" />
+
+            <div>
+                <i style="font-size:10px" class="fa fa-square fa-"></i>
+                <label asp-for="UserName">نام کاربری:</label>
+                <input asp-for="UserName" type="text" required minlength="1" autocomplete="off" class="sign-in-form-input" />
+                <span class="client-error">نام کاربری خالی نباید باشد</span>
+            </div>
+
+            <div>
+                <i style="font-size:10px" class="fa fa-square fa-"></i>
+                <label asp-for="PassWord">رمز عبور:</label>
+                <input asp-for="PassWord" type="password" required minlength="1" class="sign-in-form-input" />
+                <span class="client-error">رمز عبور خالی نباید باشد</span>
+            </div>
+
+            <div style="margin-bottom:40px;">
+                <label asp-for="RememberMe">مرا به خاطر بسپار</label>
+                <input asp-for="RememberMe" type="checkbox" checked />
+                @if (Model.NotFirstTime == true)
+                {
+                    <span class="server-error">نام کاربری یا رمز عبور اشتباه است</span>
+                }
+            </div>
+
+            <div style="font-size:10px">
+                <i class="fa fa-exclamation"></i>
+                <a asp-action="SignUp">ثبت نام نکرده نکرده ام</a>
+                <i class="fa fa-exclamation"></i>
+                <a>رمز عبور را فرامش کرده ام</a>
+            </div>
+
+            <div>
+                <input type="submit" value="ورود" />
+                <input type="reset" value="بازگشت مقدار اولیه" />
+            </div>
+
+        </form>
+    </div>
+    <script src="~/js/registery.js"></script>
+</body>
+</html>

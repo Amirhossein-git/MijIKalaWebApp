@@ -1,0 +1,11 @@
+﻿
+<h3>تغییر یا حذف کالا</h3>
+
+<h5>شناسه کالا</h5>
+<form method="get" asp-area="Admin" asp-controller="Home" asp-action="ChangeOrRemoveProduct">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <label id="id" class="control-label">شناسه</label>
+    <input id="id" name="guid" type="text" placeholder="شناسه" class="form-control" />
+    <input value="تایید" type="submit" class="m-3" />
+</form>
+

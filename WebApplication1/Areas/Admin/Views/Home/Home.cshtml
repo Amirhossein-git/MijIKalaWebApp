@@ -1,0 +1,12 @@
+﻿
+<h3>بخش اصلی</h3>
+<h5>اطاعیه های مربوط به کارکنان</h5>
+<p>@Html.Raw(ViewBag.workersNews)</p>
+<hr />
+<h5>قسمت های پنل مدیرت</h5>
+<div class="d-flex flex-column mb-1">
+    <a  asp-controller="Home" asp-action="AddProduct" class="bg-transparent page-link custom-link">محصول جدید</a>
+    <a  asp-controller="Home" asp-action="ChangeOrRemoveProduct" class="bg-transparent page-link custom-link">ویرایش محصول</a>
+    <a  asp-controller="Home" asp-action="Warehouse" class="bg-transparent page-link custom-link">انبارداری</a>
+    <a  asp-controller="Home" asp-action="WarehouseItem" class="bg-transparent page-link custom-link">تغییر موجودی انبارها</a>
+</div>

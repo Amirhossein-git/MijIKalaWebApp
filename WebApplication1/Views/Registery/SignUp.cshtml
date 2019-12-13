@@ -1,0 +1,111 @@
+﻿@model SignUpViewModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="~/css/registery.css" />
+    <link rel="stylesheet" href="~/lib/font-awesome-4.7.0/css/font-awesome.min.css">
+    @{if (Model.NotFirstTime)
+        {
+            <style>
+                .sign-up-form-input {
+                    border-color: rgb(202, 190, 54);
+                }
+            </style>
+        }
+    }
+</head>
+<body class="registery">
+    <div class="sign-in-main-div">
+        <h3 style="color:darkblue">ثبت نام</h3>
+        @{if (Model.NotFirstTime)
+            {
+                <span style="color:rgb(202, 190, 54); font-size:14px">
+                    ثبت نام ناموفق بود. خواهشا دوباره سعی کنید
+                </span>
+            }
+        }
+        <form asp-action="Signup" novalidate class="sign-up-form" name="registery-form" method="post" onsubmit="return checkFormSignUp()">
+            <input asp-for="NotFirstTime" type="hidden" value="true" />
+
+            <div style="display:flex; flex-flow:row nowrap; justify-content:flex-start" >
+                
+                <div>
+                    <i style="font-size:12px" class="fa fa-asterisk"></i>
+                    <label asp-for="Name">نام:</label>
+                    <input asp-for="Name" type="text" required minlength="3" autocomplete="off" class="sign-up-form-input" />
+                    <span class="client-error">نام شما باید بیش از ۲ حرف داشته باشد</span>
+                </div>
+
+                <div>
+                    <i style="font-size:12px" class="fa fa-asterisk"></i>
+                    <label asp-for="FamilyName">نام خانوادگی:</label>
+                    <input asp-for="FamilyName" type="text" required minlength="2" autocomplete="off" class="sign-up-form-input" />
+                    <span class="client-error">نام خوانوادگی شما باید بیش از ۱ حرف داشته باشد</span>
+                </div>
+
+            </div>
+
+            <div style="display:flex; flex-flow:row nowrap; justify-content:flex-start">
+
+                <div style="margin:1px;">
+                    <i style="font-size:12px" class="fa fa-asterisk"></i>
+                    <label asp-for="UserName">نام کاربری:</label>
+                    <input asp-for="UserName" type="text" required minlength="3" autocomplete="off" class="sign-up-form-input" />
+                    <span class="client-error">نام کاربری شما باید بیش از ۲ حرف داشته باشد</span>
+                </div>
+
+                <div style="margin:1px;">
+                    <i style="font-size:12px" class="fa fa-asterisk"></i>
+                    <label asp-for="PassWord">رمز عبور:</label>
+                    <input asp-for="PassWord" type="password" required minlength="7" class="sign-up-form-input" />
+                    <span class="client-error">رمز عبور شما باید بیش از ۶ کاراکتر داشته باشد</span>
+                </div >
+
+            </div>
+
+            <div style="width:45%;">
+                <i style="font-size:12px" class="fa fa-asterisk"></i>
+                <label asp-for="HomePhoneNumber">شماره ثابت:</label>
+                <input asp-for="HomePhoneNumber" type="text" required minlength="1" autocomplete="off" class="sign-up-form-input" />
+                <span class="client-error">شماره ثابت باید پر شود</span>
+            </div>
+
+            <div style="width:45%;">
+                <i style="font-size:12px" class="fa fa-asterisk"></i>
+                <label asp-for="MobilePhoneNumber">شماره موبایل:</label>
+                <input asp-for="MobilePhoneNumber" type="text" required minlength="1" autocomplete="off" class="sign-up-form-input" />
+                <span class="client-error">شماره موبایل باید پر شود</span>
+            </div>
+
+            <div style="width:55%;">
+                <i style="font-size:12px" class="fa fa-asterisk"></i>
+                <label asp-for="Email">ایمیل:</label>
+                <input asp-for="Email" type="text" autocomplete="off" class="sign-up-form-input" />
+            </div>
+
+
+            <div style="width:55%;">
+                <i style="font-size:12px" class="fa fa-asterisk"></i>
+                <label asp-for="PostCode">کد پستی:</label>
+                <input asp-for="PostCode" type="text" required minlength="1" autocomplete="off" class="sign-up-form-input" />
+                <span class="client-error">کد پستی باید پر شود</span>
+            </div>
+
+            <div>
+                <i style="font-size:12px" class="fa fa-asterisk"></i>
+                <label asp-for="Adress">آدرس:</label>
+                <input asp-for="Adress" type="text" required minlength="1" autocomplete="off" class="sign-up-form-input" />
+                <span class="client-error">آدرس باید پر شود</span>
+            </div>
+
+            <div>
+                <input type="submit" value="ورود" />
+                <input type="reset" value="بازگشت مقدار اولیه" />
+            </div>
+
+        </form>
+    </div>
+    <script src="~/js/registery.js"></script>
+</body>
+</html>

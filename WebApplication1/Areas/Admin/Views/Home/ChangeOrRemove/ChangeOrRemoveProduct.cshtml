@@ -1,0 +1,66 @@
+﻿@model ProductAdminViewModel
+
+<div>
+    <h3>تغییر یا حذف کالا</h3>
+    <h6>"@Model.Name" :نام فعلی کالا</h6>
+    <h6>"@ViewBag.guid" :شناسه کالا</h6>
+    <a asp-area="" asp-controller="Products" asp-action="DetailedProducts" asp-route-id="@ViewBag.guid">مشاهده ی جزییات کالا</a>
+</div>
+<hr />
+<h5>حذف محصول</h5>
+<div style="border-bottom:1px solid rgb(217, 215, 215)">
+    <form method="get" asp-area="Admin" asp-controller="Home" asp-action="ChangeOrRemoveProduct">
+        <input name="delete" value="true" type="hidden" />
+        <input name="guid" value="@ViewBag.guid" type="hidden" />
+        <input value="حذف" type="submit" class="m-3" />
+    </form>
+</div>
+<h5>تغییر محصول</h5>
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" asp-area="Admin" asp-controller="Home" asp-action="ChangeOrRemoveProduct" asp-route-guid="@ViewBag.guid">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Slogan" class="control-label">شعار تبلیغاتی</label>
+                <input asp-for="Slogan" class="form-control" placeholder="شعار" />
+                <span asp-validation-for="Slogan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label">نام کالا</label>
+                <input asp-for="Name" class="form-control" placeholder="نام" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label">قیمت کالا</label>
+                <input asp-for="Price" class="form-control" placeholder="قیمت" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImgSource" class="control-label">آدرس عکس</label>
+                <input asp-for="ImgSource" class="form-control" placeholder="عکس" />
+                <span asp-validation-for="ImgSource" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DiscountPercentage" class="control-label">تخفیف</label>
+                <input asp-for="DiscountPercentage" class="form-control" placeholder="تخفیف" />
+                <span asp-validation-for="DiscountPercentage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Category" class="control-label">دسته بتدی</label>
+                <input asp-for="Category" class="form-control" placeholder="دسته بندی" />
+                <span asp-validation-for="Category" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HtmlProductDemonstration" class="control-label">ویزگی ها (htmlDemonstration)</label>
+                <input asp-for="HtmlProductDemonstration" class="form-control" placeholder="ویزگی ها" />
+                <span asp-validation-for="HtmlProductDemonstration" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="ثبت" class="btn btn-primary" />
+            </div>
+            <div class="form-group">
+                <input type="reset" value="بازگشت مقادیر اولیه" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>

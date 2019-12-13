@@ -1,0 +1,15 @@
+﻿@model ContainInfoViewModel
+
+<h3>اطلاعات @Model.Title</h3>
+
+@if (Model.InfoItems != null)
+{
+    @foreach (var item in Model.InfoItems)
+    {
+        <h5>@item.Title</h5>
+        <p>
+            @Html.Raw(item.Description)
+        </p>
+    }
+}
+

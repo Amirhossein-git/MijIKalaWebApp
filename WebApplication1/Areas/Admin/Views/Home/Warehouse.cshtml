@@ -1,0 +1,50 @@
+﻿@model WarehouseAdminViewModel
+
+<h3>اطلاعات انبارها</h3>
+<h5>لیست انبارها</h5>
+<div class="d-flex flex-row flex-wrap" style="border-bottom:1px solid rgb(217, 215, 215)">
+    @foreach (var warehouse in Model.Warehouses)
+    {
+        <div class="m-1">
+            <span>@warehouse.Name</span>
+            <form method="post" asp-area="Admin" asp-controller="Home" asp-action="Info">
+                <input value="اطلاعات بیشتر" type="submit" class="m-3 btn btn-primary float-right" />
+                <input name="Function" value="WarehouseId" type="hidden" />
+                <input name="intId" value="@warehouse.WarehouseId" type="hidden" />
+            </form>
+        </div>
+    }
+</div>
+<h5>افزایش یا کاهش انبار</h5>
+<div>
+    <div style="border-bottom:1px solid rgb(217, 215, 215)">
+        <span>افزایش</span>
+        <form method="post" asp-area="Admin" asp-controller="Home" asp-action="Warehouse">
+            <div class="form-group">
+                <label id="Name" class="control-label">نام</label>
+                <input id="Name" name="Name" placeholder="نام انبار" class="form-control" type="text" />
+            </div>
+            <div class="form-group">
+                <label id="Adress" class="control-label">آدرس</label>
+                <input id="Adress" name="Adress" placeholder="آدرس انبار" class="form-control" type="text" />
+            </div>
+            <div class="form-group">
+                <label id="Telephone" class="control-label">تلفن</label>
+                <input id="Telephone" name="Telephone" placeholder="تلفن انبار" class="form-control" type="text" />
+            </div>
+            <div class="form-group">
+                <label id="Manager" class="control-label">مدیر</label>
+                <input id="Manager" name="Manager" placeholder="نام مدیر" class="form-control" type="text" />
+            </div>
+            <input value="افزودن" type="submit" class="m-3" />
+        </form>
+    </div>
+    <div>
+        <span>کاهش</span>
+        <form method="get" asp-area="Admin" asp-controller="Home" asp-action="Warehouse">
+            <label id="id" class="control-label">Id</label>
+            <input id="id" name="id" type="number" placeholder="شناسه انبار" class="form-control" />
+            <input value="حذف" type="submit" class="m-3" />
+        </form>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    @RenderSection("Styles", false)
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/lib/bootstrap-4.2.1-rtl/dist/css/rtl/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Area/Admin/css/adminSite.css" />
+    <link rel="stylesheet" href="~/lib/font-awesome-4.7.0/css/font-awesome.min.css">
+    <title>_Layout</title>
+</head>
+<body>
+    <header>
+        <h2 style="margin-right:25px">پنل میریت</h2>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3">
+            <a class="navbar-brand" asp-controller="Home" asp-action="Home">
+                <i class="fa fa-user"></i>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-controller="Home" asp-action="AddProduct">ثبت کالا</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-controller="Home" asp-action="ChangeOrRemoveProduct">تغییر/حذف کالا</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-controller="Home" asp-action="Warehouse">بررسی انبارها</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-controller="Home" asp-action="WarehouseItem">تغییر موجودی انبارها</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div class="body-context">
+        @RenderBody()
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        @RenderSection("Scripts", false)
+    </div>
+</body>
+</html>

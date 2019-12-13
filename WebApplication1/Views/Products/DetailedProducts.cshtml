@@ -1,0 +1,69 @@
+﻿@model Product
+
+@*Product Info*@
+
+<div style="width: 100%; margin-bottom:25px; overflow:auto">
+    <img style="float:left" width="180" height="180" src="@Url.Content(Model.ImgSource)" alt="products-detailed-@Model.Name-img">
+    <div>
+        <h5>@Model.Name</h5>
+        <p>
+            @{ if (Model.DiscountPercentage == 0)
+                {
+                    <div>
+                        قیمت:  @Model.Price تومان
+                    </div>
+                }
+                else
+                {
+                    <div>
+                        &nbsp;قیمت:
+                        <span class="text-muted" style="text-decoration:line-through">
+                            @Model.Price تومان
+                        </span>
+                    </div>
+                    <div>
+                        قیمت با تخفیف:  @(Model.Price * (100 - Model.DiscountPercentage) / 100) تومان
+                    </div>
+                }
+            }
+        </p>
+    </div>
+    <a href="#" class="btn btn-primary">
+        افزودن به سبد خرید
+    </a>
+</div>
+<div style="background-color:rgb(233, 231, 231)">
+    <ul>
+        @Html.Raw(Model.HtmlProductDemonstration)
+    </ul>
+</div>
+
+@*comments*@
+
+@if (Model.Comments.Count > 0)
+{
+    <div class="container" style="width:100%">
+        <div class="row" style="width:100%">
+            <div class="panel panel-default widget" style="width:100%">
+                <div class="panel-heading" style="width:100%">
+                    <span class="glyphicon glyphicon-comment"></span>
+                    <h3 class="panel-title">
+                        نظرات
+                    </h3>
+                    <span class="label label-info">
+                        @Model.Comments.Count()
+                    </span>
+                </div>
+                <div class="panel-body" style="width:100%">
+                    <ul class="list-group">
+                        @for (int i = 0; i < Model.Comments.Count(); i++)
+                        {
+                            <vc:comments id="@Model.ProductId" n="@i"></vc:comments>
+                        }
+                    </ul>
+                    <a href="#" class="btn btn-primary btn-sm btn-block" role="button"><span class="glyphicon glyphicon-refresh"></span> More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+}

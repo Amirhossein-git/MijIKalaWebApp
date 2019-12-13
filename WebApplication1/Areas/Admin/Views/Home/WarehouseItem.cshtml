@@ -1,0 +1,46 @@
+﻿
+<h3>تغییر موجدی انبارها</h3>
+<h5>حذف آیتم انبارداری</h5>
+<div style="border-bottom:1px solid rgb(217, 215, 215)">
+    <form method="get" asp-area="Admin" asp-controller="Home" asp-action="WarehouseItem">
+        <label id="id" class="control-label">Id</label>
+        <input id="id" name="Guid" type="text" placeholder="شناسه آیتم انبارداری" class="form-control" />
+        <input value="حذف" type="submit" class="m-3" />
+    </form>
+</div>
+<h5>آیتم انبارداری جدید</h5>
+<div style="border-bottom:1px solid rgb(217, 215, 215)">
+    <form method="post" asp-area="Admin" asp-controller="Home" asp-action="WarehouseItem">
+        <input name="Function" value="Add" type="hidden" />
+        <div class="form-group">
+            <label id="warehouse-id" class="control-label">انبار</label>
+            <input id="warehouse-id" name="WarehouseId" placeholder="شناسه انبار" class="form-control" type="number" />
+        </div>
+        <div class="form-group">
+            <label id="product-id" class="control-label">کالا</label>
+            <input id="product-id" name="ProductId" placeholder="شناسه کالا" class="form-control" type="text" />
+        </div>
+        <div class="form-group">
+            <label id="number" class="control-label">تعداد</label>
+            <input id="number" name="NumberInWarehouse" placeholder="تعداد کالا" class="form-control" type="number" />
+        </div>
+        <input value="افزودن" type="submit" class="m-3" />
+    </form>
+</div>
+<h5>ویرایش آیتم انبارداری</h5>
+<div>
+    <div>
+        <form method="post" asp-area="Admin" asp-controller="Home" asp-action="WarehouseItem">
+            <input name="Function" value="Edit" type="hidden" />
+            <div class="form-group">
+                <label id="warehouse-id" class="control-label">آیتم انبارداری</label>
+                <input id="warehouse-id" name="WarehouseItemId" placeholder="شناسه آیتم" class="form-control" type="text" />
+            </div>
+            <div class="form-group">
+                <label id="number" class="control-label">تعداد</label>
+                <input id="number" name="NumberInWarehouse" placeholder="تعداد جدید" class="form-control" type="number" />
+            </div>
+            <input value="تغییر" type="submit" class="m-3" />
+        </form>
+    </div>
+</div>

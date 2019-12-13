@@ -1,0 +1,133 @@
+﻿@model ProductsViewModel
+
+@{
+    int numberInEachPage = 12;
+    int currentPage;
+}
+
+@functions{
+
+    public static async Task<int> LastPage(int numberInEachPage, int NumberOfObj)
+    {
+        if (NumberOfObj % numberInEachPage == 0)
+            return NumberOfObj / numberInEachPage;
+        return NumberOfObj / numberInEachPage + 1;
+    }
+}
+
+<h2>@Model.ProductTiltle</h2>
+
+@*Products*@
+
+<div style="display:flex; justify-content:space-around; flex-wrap:wrap">
+    @{
+        //out
+        if (numberInEachPage * (ViewBag.page - 1) >= ViewBag.numberInCategory || ViewBag.page <= 0)
+        {
+            <p>صفحه نامعتبر است</p>
+            currentPage = 1;
+        }
+
+        //in
+        else if ((numberInEachPage * ViewBag.page - 1) <= ViewBag.numberInCategory)
+        {
+            for (int i = numberInEachPage * (ViewBag.page - 1); i < numberInEachPage * ViewBag.page; i++)
+            {
+                <vc:products id="@Model.IdList[i]"></vc:products>
+
+            }
+            currentPage = ViewBag.page;
+        }
+
+        //edge
+        else
+        {
+            for (int i = numberInEachPage * (ViewBag.page - 1); i < ViewBag.numberInCategory; i++)
+            {
+                <vc:products id="@Model.IdList[i]"></vc:products>
+            }
+            currentPage = ViewBag.page;
+        }
+    }
+</div>
+
+@*Pager*@
+
+<nav style="display:flex; flex-flow:row nowrap; justify-content:center">
+    <ul class="pagination justify-content-center">
+        @{
+            var lastPage = await LastPage(numberInEachPage, ViewBag.numberInCategory);
+            //not last page
+            if (currentPage != lastPage)
+            {
+                <li class="page-item">
+                    <a class="page-link" asp-route-page="@(currentPage + 1)">
+                        <i class="fa fa-angle-double-right paging"></i>
+                        بعدی
+                    </a>
+                </li>
+                <li class="page-item"><a class="page-link" asp-route-page="@lastPage">@lastPage</a></li>
+                //First To Last
+                if (currentPage == lastPage - 1)
+                {
+
+                }
+                //Second To Last
+                else if (currentPage == lastPage - 2)
+                {
+                    <li class="page-item"><a class="page-link" asp-route-page="@(currentPage + 1)">@(currentPage + 1)</a></li>
+                }
+                else
+                {
+                    <li class="page-item"><p class="page-link">...</p></li>
+                    <li class="page-item"><a class="page-link" asp-route-page="@(currentPage + 1)">@(currentPage + 1)</a></li>
+                }
+            }
+
+            //Last Page
+            else
+            {
+                <li class="page-item disabled">
+                    <a class="page-link" tabindex="-1">بعدی</a>
+                </li>
+            }
+            //currentPage must be shown in every situation
+            <li class="page-item font-weight-bolder"><a class="page-link" asp-route-page="@currentPage">@currentPage</a></li>
+
+            //not first page
+            if (currentPage != 1)
+            {
+                //Second Page
+                if (currentPage == 2)
+                {
+
+                }
+                //Third Page
+                else if (currentPage == 3)
+                {
+                    <li class="page-item"><a class="page-link" asp-route-page="2">2</a></li>
+                }
+                else
+                {
+                    <li class="page-item"><a class="page-link" asp-route-page="@(currentPage - 1)">@(currentPage - 1)</a></li>
+                    <li class="page-item"><p class="page-link">...</p></li>
+                }
+                <li class="page-item"><a class="page-link" asp-route-page="1">1</a></li>
+                <li class="page-item">
+                    <a class="page-link" asp-route-page="@(currentPage - 1)">
+                        قبلی
+                        <i class="fa fa-angle-double-left paging"></i>
+                    </a>
+                </li>
+            }
+
+            //First Page
+            else
+            {
+                <li class="page-item disabled">
+                    <a class="page-link" tabindex="-1">قبلی</a>
+                </li>
+            }
+        }
+    </ul>
+</nav>

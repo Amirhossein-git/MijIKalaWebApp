@@ -1,0 +1,36 @@
+﻿@model Product
+
+    <div class="card" style="width: 18rem; margin-bottom:25px">
+        <img height="350" src="@Url.Content(Model.ImgSource)" class="card-img-top" alt="products-detailed-@Model.Name-img">
+        <div class="card-body">
+            <h5 class="card-title">@Model.Name</h5>
+            <p class="card-text">
+                @{ if (Model.DiscountPercentage == 0)
+                    {
+                        <div>
+                            قیمت:  @Model.Price تومان
+                        </div>
+                    }
+                    else
+                    {
+                        <div>
+                            &nbsp;قیمت:
+                            <span class="text-muted" style="text-decoration:line-through">
+                                @Model.Price تومان
+                            </span>
+                        </div>
+
+                        <div>
+                            قیمت با تخفیف:  @(Model.Price * (100 - Model.DiscountPercentage) / 100) تومان
+                        </div>
+                    }
+                }
+            </p>
+            <p style="height:25px"></p>
+            <a style="position:absolute; right:20px; bottom:15px"
+               asp-controller="Products" asp-action="DetailedProducts" asp-route-id="@Model.ProductId" class="btn btn-primary">
+                اطلاعات بیشتر
+            </a>
+        </div>
+    </div>
+

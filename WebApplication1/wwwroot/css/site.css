@@ -1,0 +1,251 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+@keyframes exclamation-mark-animation {
+    0% {
+        transform: translateY(6px);
+        color: black;
+    }
+
+    25% {
+        transform: rotate(-10deg);
+        transform-origin: 80% 80%;
+    }
+
+    50% {
+        transform: rotate(10deg);
+        transform-origin: 80% 80%;
+        color: orangered;
+    }
+
+    75% {
+        transform: rotate(0);
+        transform-origin: 80% 80%;
+    }
+
+    100% {
+        color: black;
+    }
+}
+
+@font-face {
+    font-family: Main;
+    src: url('Fonts/Gandom/Gandom.ttf') format('truetype'), url('Fonts/Gandom/Gandom.eot') format('embedded-opentype'), url('Fonts/Gandom/Gandom.woff') format('woff');
+}
+
+.exclamation-mark-animation {
+    float: right;
+    animation: exclamation-mark-animation 1s ease-in-out alternate infinite;
+}
+
+* {
+    direction: rtl;
+    font-family: Main;
+}
+
+a.navbar-brand {
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
+}
+
+/* Provide sufficient contrast against white background */
+a {
+    color: #0366d6;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.border-top {
+    border-top: 1px solid #e5e5e5;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+    font-size: 1rem;
+    line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px; /* Vertically center the text there */
+}
+
+footer {
+    background-color: white;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0px 0px 23px rgb(207, 206, 206);
+}
+
+.fa {
+    margin: 9px 9px 0px 9px;
+}
+
+.fa-twitter {
+    color: rgb(51, 144, 206);
+}
+
+.fa-facebook-official {
+    color: #1861ac;
+}
+
+.fa-whatsapp {
+    color: rgb(39, 222, 25);
+}
+
+.fa-instagram {
+    color: rgb(208, 9, 76);
+}
+
+.home-div {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-content: center;
+    min-height: 50px;
+    width: 100%;
+    margin-bottom: 35px;
+}
+
+.home-ad-div {
+    background-color: #e4e9ed;
+    border: 1px solid rgb(207, 206, 206);
+    min-height: 210px;
+    margin-bottom: 35px;
+    box-shadow: 0px 0px 8px 1px rgb(207, 206, 206);
+}
+
+.ad-img {
+    float: right;
+    width: 12%;
+    height: auto;
+    margin-right: 11px;
+    margin-top: 6px;
+}
+
+.home-div > div {
+    background-color:lightyellow;
+    margin: 5px;
+    display: flex;
+    flex-flow: column nowrap;
+    width: 19%;
+    height: 90%;
+    box-shadow: 0px 0px 8px 1px rgb(207, 206, 206);
+    border: 1px solid rgb(207, 206, 206);
+}
+
+.home-div-products > a {
+    color: black;
+    margin: 13px;
+    background-color: lightyellow;
+    border-radius: 15px 40px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    width: 170px;
+    height: 170px;
+    box-shadow: 1px 1px 10px 1px rgb(207, 206, 206);
+    border: 1px solid black;
+}
+
+    .home-div-products > a:focus {
+        outline: 0;
+    }
+
+    .home-div-products > a:hover {
+        outline: 0;
+        box-shadow: 3px 3px 16px 3px rgb(207, 206, 206);
+        transition: ease-in-out;
+    }
+
+.goto-top-btn {
+    display: none;
+    margin-left: 5px;
+    position: fixed;
+    height: 45px;
+    width: 45px;
+    font-size: 30px;
+    left: 0;
+    bottom: 30px;
+    border-radius: 50%;
+    z-index: 1000;
+}
+
+    .goto-top-btn:focus {
+        outline: 0;
+        box-shadow: none;
+    }
+
+    .goto-top-btn i {
+        position: absolute;
+        bottom: 5%;
+        left: 5%;
+        margin-bottom: 5px;
+    }
+
+.home-div-img {
+    margin-left: 8px;
+    float: left;
+    width: 60px;
+    height: 60px;
+    border: 1px thin black;
+    box-shadow: 0px 2px 8px rgb(165, 60, 60);
+}
+
+.home-div-product-header {
+    font-weight: 500;
+    font-size: 19px;
+    color: rgb(213, 16, 16);
+    text-shadow: 1px 1px 2px rgb(44, 48, 95);
+}
+
+i.paging{
+    margin:0;
+}

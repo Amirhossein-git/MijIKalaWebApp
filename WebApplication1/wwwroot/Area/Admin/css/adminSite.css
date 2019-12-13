@@ -1,0 +1,41 @@
+﻿
+@font-face {
+    font-family: Main;
+    src: url('Fonts/Shabnam/Shabnam.ttf') format('truetype'),
+        url('Fonts/Shabnam/Shabnam.woff') format('woff'),
+        url('Fonts/Shabnam/Shabnam.woff2') format('woff'),
+        url('Fonts/Shabnam/Shabnam.eot') format('embedded-opentype');
+}
+
+*{
+    margin:0;
+    padding:2px;
+    box-sizing:border-box;
+    font-family:Main;
+}
+
+body{
+    background-color: rgba(242, 127, 2, 0.38);
+    padding-top: 32px;
+}
+
+.body-context{
+    min-height:800px;
+    background-color: rgba(242, 127, 2, 0.27);
+    border: 10px double rgba(233, 121, 0, 0.73);
+    border-radius:10px;
+    margin:10px 25px;
+}
+
+.custom-link {
+    outline: none;
+    border: 1px solid rgba(242, 127, 2, 0.52);
+    margin-bottom:1px;
+    transition:0.2s ease-in-out;
+}
+
+    .custom-link:hover {
+        background-color: rgba(233, 100, 0, 0.13) !important;
+        border: 1px solid rgba(242, 112, 2, 0.67) !important;
+        box-shadow: 0 0 5px rgba(233, 121, 0, 0.68) inset;
+    }
